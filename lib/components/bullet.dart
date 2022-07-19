@@ -1,7 +1,9 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:space_scape/components/enemy.dart';
 
-class Bullet extends SpriteComponent {
+class Bullet extends SpriteComponent with CollisionCallbacks {
   final double _speed = 400;
   final SpriteSheet spriteSheet;
 
@@ -11,9 +13,25 @@ class Bullet extends SpriteComponent {
     Vector2? size,
     Sprite? sprite,
   }) : super(
+            anchor: Anchor.center,
             position: position,
             size: size,
             sprite: spriteSheet.getSpriteById(28));
+
+  @override
+  void onMount() {
+    final shape = CircleHitbox();
+    add(shape);
+    super.onMount();
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Enemy) {
+      removeFromParent();
+    }
+    super.onCollision(intersectionPoints, other);
+  }
 
   @override
   void update(double dt) {

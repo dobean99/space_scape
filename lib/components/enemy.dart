@@ -1,7 +1,8 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
+import 'package:space_scape/components/bullet.dart';
 
-class Enemy extends SpriteComponent with HasGameRef {
+class Enemy extends SpriteComponent with HasGameRef,CollisionCallbacks {
   final double _speed = 200;
   late Vector2 gameSize;
 
@@ -15,6 +16,19 @@ class Enemy extends SpriteComponent with HasGameRef {
   Future<void>? onLoad() {
     gameSize = gameRef.size;
     return super.onLoad();
+  }
+  @override
+  void onMount() {
+    final shape = CircleHitbox();
+    add(shape);
+    super.onMount();
+  }
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Bullet) {
+      removeFromParent();
+    }
+    super.onCollision(intersectionPoints, other);
   }
 
   @override

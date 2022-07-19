@@ -13,7 +13,8 @@ void main() {
   runApp(GameWidget(game: game));
 }
 
-class SpaceScape extends FlameGame with PanDetector, TapDetector,HasCollisionDetection{
+class SpaceScape extends FlameGame
+    with PanDetector, TapDetector, HasCollisionDetection {
   Offset? _pointerStartPosition;
   Offset? _pointerCurrentPosition;
   late SpriteSheet spriteSheet;
@@ -42,31 +43,31 @@ class SpaceScape extends FlameGame with PanDetector, TapDetector,HasCollisionDet
 
     return super.onLoad();
   }
-
-  @override
-  void update(double dt) {
-    final bullets = children.whereType<Bullet>();
-    final enemies= children.whereType<Enemy>();
-    for (final enemy in enemies) {
-      for (final bullet in bullets) {
-        if (enemy.containsPoint(bullet.absoluteCenter)) {
-          enemy.removeFromParent();
-          bullet.removeFromParent();
-          break;
-        }
-      }
-      if( player.containsPoint(enemy.absoluteCenter)){
-        debugPrint("Enemy killed player");
-      }
-    }
-    super.update(dt);
-  }
+  ///code not use CollisionCallbacks
+  // @override
+  // void update(double dt) {
+  //   final bullets = children.whereType<Bullet>();
+  //   final enemies = children.whereType<Enemy>();
+  //   for (final enemy in enemies) {
+  //     for (final bullet in bullets) {
+  //       if (enemy.containsPoint(bullet.absoluteCenter)) {
+  //         enemy.removeFromParent();
+  //         bullet.removeFromParent();
+  //         break;
+  //       }
+  //     }
+  //     if (player.containsPoint(enemy.absoluteCenter)) {
+  //       debugPrint("Enemy killed player");
+  //     }
+  //   }
+  //   super.update(dt);
+  // }
 
   @override
   void onTapDown(TapDownInfo info) {
     bullet = Bullet(
       size: Vector2(64, 64),
-      position: player.position,
+      position: player.position.clone(),
       spriteSheet: spriteSheet,
     );
     bullet.anchor = Anchor.center;
