@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/sprite.dart';
@@ -77,9 +78,9 @@ class SpaceScape extends FlameGame
     //add enemy
     enemyManager = EnemyManager(spriteSheet: spriteSheet);
     add(enemyManager);
-
     return super.onLoad();
   }
+
   void joystickAction() {
     final bullet = Bullet(
       size: Vector2(32, 32),
@@ -90,6 +91,7 @@ class SpaceScape extends FlameGame
 
     add(bullet);
   }
+
   ///code not use CollisionCallbacks
 /* @override
   void update(double dt) {

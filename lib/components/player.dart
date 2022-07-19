@@ -1,12 +1,14 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 import 'package:space_scape/components/bullet.dart';
 import 'package:space_scape/components/enemy.dart';
 import 'package:space_scape/main.dart';
 
-class Player extends SpriteComponent with HasGameRef<SpaceScape>, CollisionCallbacks {
+class Player extends SpriteComponent
+    with HasGameRef<SpaceScape>, CollisionCallbacks {
   //Vector2 _moveDirection = Vector2.zero();
   final double _speed = 300;
   late Vector2 gameSize;
@@ -26,6 +28,18 @@ class Player extends SpriteComponent with HasGameRef<SpaceScape>, CollisionCallb
 
   @override
   Future<void>? onLoad() {
+    // add(MoveEffect.by(Vector2(0,-10 ), EffectController(
+    //   alternate: true,
+    //   infinite: true,
+    //   duration: 1,
+    //   curve: Curves.ease,
+    // )));
+    add(ColorEffect(
+      const Color(0xFFd31d1d),
+      const Offset(0.0, 0.8),
+      EffectController(duration: 1.5),
+    ));
+
     gameSize = gameRef.size;
     debugPrint(gameSize.toString());
 
@@ -60,9 +74,9 @@ class Player extends SpriteComponent with HasGameRef<SpaceScape>, CollisionCallb
       position.add(joystick.relativeDelta * _speed * dt);
     }
     position.clamp(Vector2.zero(), gameSize);
+
     super.update(dt);
   }
-
 // void setMoveDirection(Vector2 newDirection) {
 //   _moveDirection = newDirection;
 // }
