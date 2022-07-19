@@ -1,6 +1,6 @@
 # space_scape
 
-A new Flutter project.
+The first game i learned on youtube, it wrote flutter framework and flame engine. 
 
 ## Getting Started
 
