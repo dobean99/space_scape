@@ -37,6 +37,7 @@ class EnemyManager extends Component with HasGameRef {
     timer.start();
     super.onMount();
   }
+  @override
 
   @override
   void update(double dt) {

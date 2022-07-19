@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
 import 'package:space_scape/components/bullet.dart';
 
 class Enemy extends SpriteComponent with HasGameRef,CollisionCallbacks {
@@ -22,6 +23,11 @@ class Enemy extends SpriteComponent with HasGameRef,CollisionCallbacks {
     final shape = CircleHitbox();
     add(shape);
     super.onMount();
+  }
+  @override
+  void render(Canvas canvas) {
+    renderDebugMode(canvas);
+    super.render(canvas);
   }
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
