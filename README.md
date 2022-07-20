@@ -4,6 +4,9 @@
 🎯 About
 
 Space Scape is first game i learned on youtube, it wrote flutter framework and flame engine. 
+
+✅ Resources
+
 A few resources to get you started if this is your first Flutter project:
 - 🔥 Flame Engine: https://docs.flame-engine.org/1.2.0/
 - 😍 Channel tutorial: https://www.youtube.com/c/DevKage
