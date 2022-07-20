@@ -8,6 +8,9 @@ class GamePlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GameWidget(game: spaceScape);
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: GameWidget(game: spaceScape),
+    );
   }
 }

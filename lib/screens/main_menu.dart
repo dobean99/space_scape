@@ -14,11 +14,11 @@ class MainMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Space Scape",
-              style: TextStyle(
-                fontSize: 50,
-                color: Colors.white,
-              ),
+              "SpaceScape",
+              style: TextStyle(fontSize: 40, shadows: [
+                Shadow(
+                    blurRadius: 20, color: Colors.white, offset: Offset(0, 0))
+              ]),
             ),
             ButtonGradient(
               text: 'Play',
@@ -28,7 +28,7 @@ class MainMenu extends StatelessWidget {
               },
             ),
             ButtonGradient(
-              text:  'Options',
+              text: 'Options',
               onPressed: () {},
             ),
           ],
@@ -37,4 +37,3 @@ class MainMenu extends StatelessWidget {
     );
   }
 }
-

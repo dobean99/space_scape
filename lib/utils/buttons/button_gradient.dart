@@ -14,31 +14,35 @@ class ButtonGradient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(4),
-        child: Stack(children: <Widget>[
-          Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Color(0xFF0D47A1),
-                    Color(0xFF1976D2),
-                    Color(0xFF42A5F5),
-                  ],
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width/3,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4),
+          child: Stack(children: <Widget>[
+            Positioned.fill(
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xFF0D47A1),
+                      Color(0xFF1976D2),
+                      Color(0xFF42A5F5),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              primary: Colors.white,
+            Center(
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                onPressed: onPressed,
+                child: Text(text),
+              ),
             ),
-            onPressed: onPressed,
-            child: Text(text),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }

@@ -3,5 +3,10 @@ import 'package:space_scape/screens/main_menu.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MaterialApp(home: MainMenu()));
+  runApp( MaterialApp(
+    theme:ThemeData(
+      fontFamily:"BungeeInline",
+      scaffoldBackgroundColor: Colors.black
+    ),
+      home: const MainMenu()));
 }
