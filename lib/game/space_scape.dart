@@ -7,6 +7,8 @@ import 'package:space_scape/components/bullet.dart';
 import 'package:space_scape/components/enemy.dart';
 import 'package:space_scape/components/enemy_manager.dart';
 import 'package:space_scape/components/player.dart';
+import 'package:space_scape/screens/overlays/game_over.dart';
+import 'package:space_scape/utils/buttons/pause_button.dart';
 
 class SpaceScape extends FlameGame
     with HasDraggables, HasCollisionDetection, HasTappables {
@@ -89,7 +91,7 @@ class SpaceScape extends FlameGame
           textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
       playHealth.anchor = Anchor.topRight;
       add(playHealth);
-      isAlreadyLoaded=true;
+      isAlreadyLoaded = true;
       return super.onLoad();
     }
   }
@@ -109,6 +111,11 @@ class SpaceScape extends FlameGame
   void update(double dt) {
     playScore.text = "Score: ${player.score}";
     playHealth.text = "Health: ${player.health}";
+    if (player.health <= 0) {
+      pauseEngine();
+      overlays.remove(PauseButton.id);
+      overlays.add(GameOverMenu.id);
+    }
     super.update(dt);
   }
 

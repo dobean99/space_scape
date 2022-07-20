@@ -4,11 +4,11 @@ import 'package:flame/flame.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Flame.device.fullScreen();
-  runApp( MaterialApp(
-    theme:ThemeData(
-      fontFamily:"BungeeInline",
-      scaffoldBackgroundColor: Colors.black
-    ),
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          fontFamily: "BungeeInline", scaffoldBackgroundColor: Colors.black),
       home: const MainMenu()));
 }

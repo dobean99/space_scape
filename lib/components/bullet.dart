@@ -36,7 +36,7 @@ class Bullet extends SpriteComponent with CollisionCallbacks {
 
   @override
   void render(Canvas canvas) {
-    renderDebugMode(canvas);
+    //renderDebugMode(canvas);
     super.render(canvas);
   }
 

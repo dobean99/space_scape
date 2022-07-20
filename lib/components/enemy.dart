@@ -31,7 +31,7 @@ class Enemy extends SpriteComponent
 
   @override
   void render(Canvas canvas) {
-    renderDebugMode(canvas);
+    //renderDebugMode(canvas);
     super.render(canvas);
   }
 
