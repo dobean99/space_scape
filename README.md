@@ -1,16 +1,26 @@
-# space_scape
 
-The first game i learned on youtube, it wrote flutter framework and flame engine. 
+![Screenshot_20220720_160712](https://user-images.githubusercontent.com/56818006/179944219-b0ff4f65-7cc3-49f4-b78d-3a5e796e8e0a.png)
 
-## Getting Started
+🎯 About
 
-This project is a starting point for a Flutter application.
+Space Scape is first game i learned on youtube, it wrote flutter framework and flame engine. 
+
+✅ Resources
 
 A few resources to get you started if this is your first Flutter project:
+- 🔥 Flame Engine: https://docs.flame-engine.org/1.2.0/
+- 😍 Channel tutorial: https://www.youtube.com/c/DevKage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🚀 Technologies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Dart 
+- Flutter
+- Flame Engine
+
+✨ Features
+
+- Attack enemy
+- Chose type of ship
+- Buy ship 
+- High score
+- Animation, Sound effect for app
