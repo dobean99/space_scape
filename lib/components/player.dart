@@ -3,9 +3,8 @@ import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
-import 'package:space_scape/components/bullet.dart';
 import 'package:space_scape/components/enemy.dart';
-import 'package:space_scape/main.dart';
+import 'package:space_scape/game/space_scape.dart';
 
 class Player extends SpriteComponent
     with HasGameRef<SpaceScape>, CollisionCallbacks {
