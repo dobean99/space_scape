@@ -11,6 +11,8 @@ class Player extends SpriteComponent
     with HasGameRef<SpaceScape>, CollisionCallbacks {
   //Vector2 _moveDirection = Vector2.zero();
   final double _speed = 300;
+  int score = 0;
+  int health = 100;
   late Vector2 gameSize;
   JoystickComponent joystick;
   final SpriteSheet spriteSheet;
@@ -62,7 +64,11 @@ class Player extends SpriteComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Enemy) {
-      debugPrint('Player hit enemy');
+      health -= 10;
+      if(health<0)
+        {
+          health=0;
+        }
     }
     super.onCollision(intersectionPoints, other);
   }
@@ -73,10 +79,11 @@ class Player extends SpriteComponent
     if (!joystick.delta.isZero()) {
       position.add(joystick.relativeDelta * _speed * dt);
     }
-    position.clamp(Vector2.zero(), gameSize);
+    position.clamp(Vector2.zero() + size / 2, gameSize - size / 2);
 
     super.update(dt);
   }
+
 // void setMoveDirection(Vector2 newDirection) {
 //   _moveDirection = newDirection;
 // }

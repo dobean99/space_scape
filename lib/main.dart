@@ -22,6 +22,8 @@ class SpaceScape extends FlameGame
   late Enemy enemy;
   late EnemyManager enemyManager;
   late Bullet bullet;
+  late TextComponent playScore;
+  late TextComponent playHealth;
 
   // Offset? _pointerStartPosition;
   // Offset? _pointerCurrentPosition;
@@ -78,6 +80,21 @@ class SpaceScape extends FlameGame
     //add enemy
     enemyManager = EnemyManager(spriteSheet: spriteSheet);
     add(enemyManager);
+
+    // add Text
+    playScore = TextComponent(
+        text: "Score: 0",
+        position: Vector2(10, 10),
+        textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
+    playScore.anchor = Anchor.topLeft;
+    add(playScore);
+    playHealth = TextComponent(
+        text: "Health 100%",
+        position: Vector2(size.x - 10, 10),
+        textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
+    playHealth.anchor = Anchor.topRight;
+    add(playHealth);
+
     return super.onLoad();
   }
 
@@ -90,6 +107,22 @@ class SpaceScape extends FlameGame
     bullet.anchor = Anchor.center;
 
     add(bullet);
+  }
+
+  @override
+  void update(double dt) {
+    playScore.text = "Score: ${player.score}";
+    playHealth.text = "Health: ${player.health}";
+    super.update(dt);
+  }
+
+  @override
+  void render(Canvas canvas) {
+    canvas.drawRect(
+      Rect.fromLTWH(size.x - 100, 10, player.health.toDouble(), 20),
+      Paint()..color = Colors.blue,
+    );
+    super.render(canvas);
   }
 
   ///code not use CollisionCallbacks
