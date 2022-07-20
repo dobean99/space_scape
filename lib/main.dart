@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:space_scape/screens/main_menu.dart';
+import 'package:flame/flame.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Flame.device.fullScreen();
   runApp( MaterialApp(
     theme:ThemeData(
       fontFamily:"BungeeInline",

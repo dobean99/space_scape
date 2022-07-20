@@ -57,4 +57,5 @@ class Enemy extends SpriteComponent
   void onRemove() {
     super.onRemove();
   }
+
 }

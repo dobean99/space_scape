@@ -24,71 +24,74 @@ class SpaceScape extends FlameGame
   // final double _deadZoneRadius = 10;
 
   late JoystickComponent joystick;
+  bool isAlreadyLoaded = false;
 
   @override
   Future<void>? onLoad() async {
-    //add assets
-    await images.load('simpleSpace_tilesheet@2.png');
-    spriteSheet = SpriteSheet.fromColumnsAndRows(
-        image: images.fromCache('simpleSpace_tilesheet@2.png'),
-        columns: 8,
-        rows: 6);
+    if (!isAlreadyLoaded) {
+      //add assets
+      await images.load('simpleSpace_tilesheet@2.png');
+      spriteSheet = SpriteSheet.fromColumnsAndRows(
+          image: images.fromCache('simpleSpace_tilesheet@2.png'),
+          columns: 8,
+          rows: 6);
 
-    //add joystick
-    joystick = JoystickComponent(
-      anchor: Anchor.bottomLeft,
-      position: Vector2(30, size.y - 30),
-      size: 100,
-      background: CircleComponent(
-        radius: 60,
-        paint: Paint()..color = Colors.white.withOpacity(0.5),
-      ),
-      knob: CircleComponent(radius: 25),
-    );
-    add(joystick);
+      //add joystick
+      joystick = JoystickComponent(
+        anchor: Anchor.bottomLeft,
+        position: Vector2(30, size.y - 30),
+        size: 100,
+        background: CircleComponent(
+          radius: 60,
+          paint: Paint()..color = Colors.white.withOpacity(0.5),
+        ),
+        knob: CircleComponent(radius: 25),
+      );
+      add(joystick);
 
-    //add space ship
-    player = Player(
-      joystick: joystick,
-      sprite: spriteSheet.getSpriteById(7),
-      size: Vector2(64, 64),
-      position: size / 2,
-      spriteSheet: spriteSheet,
-    );
-    player.anchor = Anchor.center;
-    add(player);
+      //add space ship
+      player = Player(
+        joystick: joystick,
+        sprite: spriteSheet.getSpriteById(7),
+        size: Vector2(64, 64),
+        position: size / 2,
+        spriteSheet: spriteSheet,
+      );
+      player.anchor = Anchor.center;
+      add(player);
 
-    //add button attack
-    final button = ButtonComponent(
-      button: CircleComponent(
-        radius: 30,
-        paint: Paint()..color = Colors.white.withOpacity(0.5),
-      ),
-      anchor: Anchor.bottomRight,
-      position: Vector2(size.x - 30, size.y - 60),
-      onPressed: joystickAction,
-    );
-    add(button);
+      //add button attack
+      final button = ButtonComponent(
+        button: CircleComponent(
+          radius: 30,
+          paint: Paint()..color = Colors.white.withOpacity(0.5),
+        ),
+        anchor: Anchor.bottomRight,
+        position: Vector2(size.x - 30, size.y - 60),
+        onPressed: joystickAction,
+      );
+      add(button);
 
-    //add enemy
-    enemyManager = EnemyManager(spriteSheet: spriteSheet);
-    add(enemyManager);
+      //add enemy
+      enemyManager = EnemyManager(spriteSheet: spriteSheet);
+      add(enemyManager);
 
-    // add Text
-    playScore = TextComponent(
-        text: "Score: 0",
-        position: Vector2(10, 10),
-        textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
-    playScore.anchor = Anchor.topLeft;
-    add(playScore);
-    playHealth = TextComponent(
-        text: "Health 100%",
-        position: Vector2(size.x - 10, 10),
-        textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
-    playHealth.anchor = Anchor.topRight;
-    add(playHealth);
-
-    return super.onLoad();
+      // add Text
+      playScore = TextComponent(
+          text: "Score: 0",
+          position: Vector2(10, 10),
+          textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
+      playScore.anchor = Anchor.topLeft;
+      add(playScore);
+      playHealth = TextComponent(
+          text: "Health 100%",
+          position: Vector2(size.x - 10, 10),
+          textRenderer: TextPaint(style: const TextStyle(fontSize: 16)));
+      playHealth.anchor = Anchor.topRight;
+      add(playHealth);
+      isAlreadyLoaded=true;
+      return super.onLoad();
+    }
   }
 
   void joystickAction() {
@@ -118,7 +121,18 @@ class SpaceScape extends FlameGame
     super.render(canvas);
   }
 
-///code not use CollisionCallbacks
+  void reset() {
+    player.reset();
+    enemyManager.reset();
+    children.whereType<Enemy>().forEach((element) {
+      remove(element);
+    });
+    children.whereType<Bullet>().forEach((element) {
+      remove(element);
+    });
+  }
+
+  ///code not use CollisionCallbacks
 /* @override
   void update(double dt) {
     final bullets = children.whereType<Bullet>();
@@ -173,7 +187,7 @@ class SpaceScape extends FlameGame
     super.render(canvas);
   }*/
 
-/// code not use HasDraggable
+  /// code not use HasDraggable
 /* @override
   void onPanDown(DragDownInfo info) {}
 

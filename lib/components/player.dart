@@ -64,10 +64,9 @@ class Player extends SpriteComponent
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Enemy) {
       health -= 10;
-      if(health<0)
-        {
-          health=0;
-        }
+      if (health < 0) {
+        health = 0;
+      }
     }
     super.onCollision(intersectionPoints, other);
   }
@@ -81,6 +80,12 @@ class Player extends SpriteComponent
     position.clamp(Vector2.zero() + size / 2, gameSize - size / 2);
 
     super.update(dt);
+  }
+
+  void reset() {
+    score = 0;
+    health = 100;
+    position = gameSize / 2;
   }
 
 // void setMoveDirection(Vector2 newDirection) {

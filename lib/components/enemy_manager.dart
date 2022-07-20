@@ -50,4 +50,9 @@ class EnemyManager extends Component with HasGameRef {
     timer.stop();
     super.onRemove();
   }
+
+  void reset() {
+    timer.stop();
+    timer.start();
+  }
 }
