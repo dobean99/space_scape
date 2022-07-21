@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_scape/game/game_play.dart';
+import 'package:space_scape/screens/space_ship_shop/space_ship_shop.dart';
 import 'package:space_scape/utils/buttons/button_gradient.dart';
 import 'package:space_scape/utils/texts/text_title.dart';
 
@@ -14,6 +15,7 @@ class MainMenu extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             const TextTitle(title: "SpaceScape"),
             ButtonGradient(
               text: 'Play',
@@ -23,7 +25,15 @@ class MainMenu extends StatelessWidget {
               },
             ),
             ButtonGradient(
-              text: 'Options',
+              text: 'Shop',
+              onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const SpaceShipShop()));
+              },
+            ),
+            ButtonGradient(
+              text: 'Settings',
               onPressed: () {},
             ),
           ],

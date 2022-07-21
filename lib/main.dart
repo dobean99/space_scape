@@ -9,6 +9,12 @@ Future<void> main() async {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          fontFamily: "BungeeInline", scaffoldBackgroundColor: Colors.black),
+        fontFamily: "BungeeInline",
+        primaryColor: Colors.white,
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Colors.white)
+        ),
+        scaffoldBackgroundColor: Colors.black,
+      ),
       home: const MainMenu()));
 }
