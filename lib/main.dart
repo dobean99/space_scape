@@ -12,7 +12,8 @@ Future<void> main() async {
         fontFamily: "BungeeInline",
         primaryColor: Colors.white,
         textTheme: const TextTheme(
-          bodyText2: TextStyle(color: Colors.white)
+          bodyText2: TextStyle(color: Colors.white),
+          subtitle1: TextStyle(color: Colors.white),
         ),
         scaffoldBackgroundColor: Colors.black,
       ),
