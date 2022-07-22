@@ -14,26 +14,69 @@ class SpaceShipShop extends StatefulWidget {
 class _SpaceShipShopState extends State<SpaceShipShop> {
   final List<SpaceShip> listSpaceShip = [
     SpaceShip(
-        name: 'A',
-        assetPath: "assets/images/ship_A.png",
-        cost: 1,
-        spriteId: 1,
-        level: 1,
-        speed: 1),
+      name: 'Canary',
+      cost: 0,
+      speed: 250,
+      spriteId: 0,
+      assetPath: 'assets/images/ship_A.png',
+      level: 1,
+    ),
     SpaceShip(
-        name: 'A',
-        assetPath: "assets/images/ship_B.png",
-        cost: 1,
-        level: 1,
-        spriteId: 1,
-        speed: 1),
+      name: 'Dusky',
+      cost: 100,
+      speed: 400,
+      spriteId: 1,
+      assetPath: 'assets/images/ship_B.png',
+      level: 2,
+    ),
     SpaceShip(
-        name: 'A',
-        assetPath: "assets/images/ship_C.png",
-        cost: 1,
-        spriteId: 1,
-        level: 1,
-        speed: 1),
+      name: 'Condor',
+      cost: 200,
+      speed: 300,
+      spriteId: 2,
+      assetPath: 'assets/images/ship_C.png',
+      level: 2,
+    ),
+    SpaceShip(
+      name: 'CXC',
+      cost: 400,
+      speed: 300,
+      spriteId: 3,
+      assetPath: 'assets/images/ship_D.png',
+      level: 3,
+    ),
+    SpaceShip(
+      name: 'Raptor',
+      cost: 550,
+      speed: 300,
+      spriteId: 4,
+      assetPath: 'assets/images/ship_E.png',
+      level: 3,
+    ),
+    SpaceShip(
+      name: 'Raptor-X',
+      cost: 700,
+      speed: 350,
+      spriteId: 5,
+      assetPath: 'assets/images/ship_F.png',
+      level: 3,
+    ),
+    SpaceShip(
+      name: 'Albatross',
+      cost: 850,
+      speed: 400,
+      spriteId: 6,
+      assetPath: 'assets/images/ship_G.png',
+      level: 4,
+    ),
+    SpaceShip(
+      name: 'DK-809',
+      cost: 1000,
+      speed: 450,
+      spriteId: 7,
+      assetPath: 'assets/images/ship_H.png',
+      level: 4,
+    ),
   ];
   int currentPos = 0;
 
@@ -46,8 +89,10 @@ class _SpaceShipShopState extends State<SpaceShipShop> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const TextTitle(title: "Space Shop"),
+            const SizedBox(
+              height: 20,
+            ),
             Column(
-
               children: [
                 CarouselSlider.builder(
                     itemCount: listSpaceShip.length,
@@ -56,17 +101,37 @@ class _SpaceShipShopState extends State<SpaceShipShop> {
                       SpaceShip item = listSpaceShip[itemIndex];
                       return Column(
                         children: [
-                          Image.asset(item.assetPath),
+                          Stack(
+                            children: [
+                              Center(
+                                child: Container(
+                                  decoration:  const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.redAccent,
+                                    boxShadow: [BoxShadow(blurRadius: 5,)]
+                                  ),
+                                  height: 150,
+                                  width: 150,
+                                ),
+                              ),
+                              Center(child: Image.asset(item.assetPath)),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           Text(
                             item.name,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                           Text(
-                            "Speed:${item.speed}",
-                            style: const TextStyle(color: Colors.white),
+                            "Speed: ${item.speed}",
                           ),
-                          Text("Level:${item.level}"),
-                          Text("Cost:${item.cost}"),
+                          Text("Level: ${item.level}"),
+                          Text("Cost: ${item.cost}"),
                           ButtonGradient(
                             width: MediaQuery.of(context).size.width / 4,
                             text: 'Buy',
@@ -81,7 +146,7 @@ class _SpaceShipShopState extends State<SpaceShipShop> {
                           currentPos = index;
                         });
                       },
-                      height:400,
+                      height: 400,
                       aspectRatio: 16 / 9,
                       viewportFraction: 0.8,
                       initialPage: 0,
@@ -112,6 +177,9 @@ class _SpaceShipShopState extends State<SpaceShipShop> {
                   }).toList(),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 50,
             ),
             ButtonGradient(
               text: 'Back',

@@ -6,12 +6,12 @@ class SpaceShip {
   final int level;
   final double speed;
 
-  SpaceShip(
-      {required this.name,
-      required this.level,
-      required this.assetPath,
-      required this.cost,
-      required this.spriteId,
-      required this.speed});
-
+  SpaceShip({
+    required this.name,
+    required this.level,
+    required this.assetPath,
+    required this.cost,
+    required this.spriteId,
+    required this.speed,
+  });
 }
