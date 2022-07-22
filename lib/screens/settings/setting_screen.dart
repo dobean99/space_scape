@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_scape/utils/buttons/button_gradient.dart';
 import 'package:space_scape/utils/texts/text_title.dart';
 
 enum Language { vi, en }
@@ -59,7 +60,15 @@ class _SettingScreenState extends State<SettingScreen> {
               Icons.arrow_forward_ios_outlined,
               color: Colors.white,
             ),
-          )
+          ),
+          ButtonGradient(
+            text: 'Back',
+            width: MediaQuery.of(context).size.width / 1.5,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+
         ],
       ),
     );
