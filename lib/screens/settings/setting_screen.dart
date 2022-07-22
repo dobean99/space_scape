@@ -83,7 +83,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       .bodyText2!
                       .copyWith(color: Colors.black),
                 ),
-                //trailing: CircleAvatar(),
+                trailing: const CircleAvatar(
+                  radius: 18.0,
+                  backgroundImage: AssetImage(
+                    'assets/images/vn_flag.png',
+                  ),
+                ),
                 leading: Radio(
                   value: Language.vi,
                   groupValue: _language,
@@ -102,7 +107,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       .bodyText2!
                       .copyWith(color: Colors.black),
                 ),
-                //trailing: CircleAvatar(),
+                trailing: const CircleAvatar(
+                  radius: 18.0,
+                  backgroundImage: AssetImage(
+                    'assets/images/en_flag.png',
+                  ),
+                ),
                 leading: Radio(
                   value: Language.en,
                   groupValue: _language,
